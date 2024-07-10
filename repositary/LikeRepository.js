@@ -17,6 +17,17 @@ class LikeRepository extends CrudRepository {
         }
     }
 
+    async DeleteLikeIffound(id) {
+        try {
+            const result = await LikeModel.findByIdAndDelete(id)
+            return result
+        }
+        catch (error) { 
+            console.log("Error in like Repo find user ")
+            throw error
+        }
+    }
+
 
 }
 

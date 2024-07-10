@@ -5,11 +5,24 @@ const CommentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userEmail: {
+    onModel: {
         type: String,
+        required: true,
+        enum: ['Tweets', 'Comments']
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    commentable: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        refPath: 'onModel'
+
     }
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model('Comments',CommentSchema)
+module.exports = mongoose.model('Comments', CommentSchema)

@@ -14,7 +14,6 @@ class LikesService {
 
         if (modelType == 'Tweets') {
             var tweet = await this.twitterRepostiry.model.findById(modelId).populate('likes')
-            console.log("in togle", tweet)
         } else if (modelType === 'Comments') {
 
         } else {
@@ -31,10 +30,9 @@ class LikesService {
         if (exits) {
             console.log(exits)
             console.log("exists")
-            // tweet.likes.pull(exits.id)
+            tweet.likes.pull(exits.id)
             await tweet.save()
-            // await exits.remove()
-
+            await this.likeRepository.DeleteLikeIffound(exits.id);
             var isRemoved = true
         }
         else {

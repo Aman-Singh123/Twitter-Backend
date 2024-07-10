@@ -8,11 +8,8 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const Tweetsrouter = require('./routes/v1/tweetRoutes')
-const UserRepository = require('./repositary/user-repositary')
 
-const LikesService = require('./service/LikeService')
-const TweetService = require('./service/tweetService')
-const TwitterRepostiry = require('./repositary/twitterRepositry')
+
 
 
 
@@ -42,24 +39,24 @@ connectDb(dburl)
 // repo.create({ content: 'hii how are you what are yhou    #QWERTY #singh #rename' })
 
 
-async function check() {
-    const userrepo = new UserRepository()
-    const twitterrepo = new TwitterRepostiry()
-    const tweets = await twitterrepo.getAll(0, 10)
-    console.log(tweets)
+// async function check() {
+//     const userrepo = new UserRepository()
+//     const twitterrepo = new TwitterRepostiry()
+//     const tweets = await twitterrepo.getAll(0, 10)
+//     console.log(tweets)
 
-    const user = await userrepo.create({
-        name: 'Rajat',
-        email: 'rajat1@gmail.com',
-        password: 'rajat123',
-        mobile: "99141474"
+//     const user = await userrepo.create({
+//         name: 'Rajat',
+//         email: 'rajat1@gmail.com',
+//         password: 'rajat123',
+//         mobile: "99141474"
 
-    })
-    console.log(user)
+//     })
+//     console.log(user)
 
-    const likeService = new LikesService()
-    await likeService.toggleLike(tweets[0]._id, 'Tweets', user._id)
-}
+//     const likeService = new LikesService()
+//     await likeService.toggleLike(tweets[0]._id, 'Tweets', user._id)
+// }
 
 
 
@@ -67,7 +64,7 @@ async function check() {
 
 
 app.listen(port, () => {
-    check()
+    // check()
 
     console.log(`Example app listening on port ${port}!`)
 })
