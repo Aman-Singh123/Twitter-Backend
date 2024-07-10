@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 const Tweetsrouter = require('./routes/v1/tweetRoutes')
+const Authrouter = require('./routes/v1/authRoutes')
 
 
 
@@ -28,6 +29,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 // Routers
 app.use('/api/v1/tweets', Tweetsrouter)
+app.use('/api/v1/auth', Authrouter)
 
 
 connectDb(dburl)
