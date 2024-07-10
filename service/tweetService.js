@@ -48,6 +48,16 @@ class TweetService {
 
     }
 
+    async GetTweet(id) {
+        try {
+            const tweet = await this.twitterRepostiry.getwithComments(id)
+            return tweet
+            
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
 
 }
 

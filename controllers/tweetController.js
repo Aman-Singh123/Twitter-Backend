@@ -22,6 +22,24 @@ class TweetsController {
             })
         }
     }
+
+    static async GetaTweet(req, res, next) {
+        try {
+            const response = await TweetsService.GetTweet(req.params.id)
+            res.status(200).json({
+                status: 'success',
+                data: response
+            })
+        }
+        catch (error) {
+            return res.status(500).json({
+                status: 'fail',
+                message: error.message,
+                data: {}
+
+            })
+        }
+    } 
 }
 
 module.exports = TweetsController

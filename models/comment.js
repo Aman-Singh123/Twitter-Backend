@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const CommentSchema = new mongoose.Schema({
-    comment: {
+    content: {
         type: String,
         required: true
     },
@@ -19,8 +19,19 @@ const CommentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         refPath: 'onModel'
-
-    }
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'likes'
+        }
+    ],
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comments'
+        }
+    ]
 }, {
     timestamps: true
 })
