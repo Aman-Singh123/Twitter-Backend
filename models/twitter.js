@@ -18,7 +18,10 @@ const Twiterschema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comments'
         }
-    ]
+    ],
+    image: {
+            type: String
+    }
 }, {
     timestamps: true
 })
