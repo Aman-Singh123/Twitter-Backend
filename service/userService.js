@@ -13,6 +13,16 @@ class UserServices {
             console.log(error)
         }
     }
+
+    async getUserByEmail(email) {
+        try { 
+            const user = await this.userRepository.getUserByEmail(email)
+            return user
+        }
+        catch (error) { 
+            console.log(error)
+        }
+    }
 }
 
 

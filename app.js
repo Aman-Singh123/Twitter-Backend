@@ -7,8 +7,10 @@ const connectDb = require('./config/connectdb')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const passport = require('passport')
 const Tweetsrouter = require('./routes/v1/tweetRoutes')
 const Authrouter = require('./routes/v1/authRoutes')
+const passportAuth = require('./config/jwt')
 
 
 
@@ -25,7 +27,8 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
-
+app.use(passport.initialize())
+passportAuth(passport)
 
 // Routers
 app.use('/api/v1/tweets', Tweetsrouter)
